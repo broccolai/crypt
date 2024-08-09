@@ -1,18 +1,19 @@
-package love.broccolai.crypt.api.key;
+package love.broccolai.crypt.api.identities;
 
 import java.util.Comparator;
 import java.util.Objects;
 import org.jspecify.annotations.NullMarked;
 
 @NullMarked
-final class SimpleKey implements Key {
+public abstract class AbstractIdentity implements Identity {
 
-    static final Comparator<? super Key> COMPARATOR = Comparator.comparing(Key::namespace).thenComparing(Key::value);
+    static final Comparator<? super Identity> COMPARATOR = Comparator.comparing(Identity::namespace).thenComparing(Identity::value);
 
     private final String namespace;
     private final String value;
 
-    SimpleKey(final String namespace, final String value) {
+    //todo: maybe move all the implementations to the same directory so this can be package private
+    public AbstractIdentity(final String namespace, final String value) {
         this.namespace = namespace;
         this.value = value;
     }
@@ -28,11 +29,6 @@ final class SimpleKey implements Key {
     }
 
     @Override
-    public Key key() {
-        return this;
-    }
-
-    @Override
     public String toString() {
         return this.namespace + SEPARATOR + this.value;
     }
@@ -42,11 +38,11 @@ final class SimpleKey implements Key {
         if (this == other) {
             return true;
         }
-        if (!(other instanceof Key)) {
+        if (!(other instanceof Identity)) {
             return false;
         }
 
-        Key that = (Key) other;
+        Identity that = (Identity) other;
         return Objects.equals(this.namespace, that.namespace()) && Objects.equals(this.value, that.value());
     }
 
@@ -58,7 +54,7 @@ final class SimpleKey implements Key {
     }
 
     @Override
-    public int compareTo(final Key that) {
+    public int compareTo(final Identity that) {
         return COMPARATOR.compare(this, that);
     }
 }

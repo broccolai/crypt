@@ -1,15 +1,14 @@
 package love.broccolai.crypt.api.holder;
 
-import love.broccolai.crypt.api.key.Key;
+import love.broccolai.crypt.api.identities.AbstractIdentity;
 import org.jspecify.annotations.NullMarked;
 
 @NullMarked
-public final class ServerCurrencyHolder implements CurrencyHolder {
+public final class ServerCurrencyHolder extends AbstractIdentity implements CurrencyHolder {
 
     public static final String NAMESPACE = "server";
 
-    @Override
-    public Key key() {
-        return Key.key(NAMESPACE, NAMESPACE);
+    ServerCurrencyHolder() {
+        super(NAMESPACE, NAMESPACE);
     }
 }

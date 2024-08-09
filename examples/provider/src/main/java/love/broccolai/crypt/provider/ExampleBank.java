@@ -1,14 +1,13 @@
 package love.broccolai.crypt.provider;
 
-import love.broccolai.crypt.api.key.Key;
-import love.broccolai.crypt.api.key.Keyed;
+import love.broccolai.crypt.api.bank.CurrencyBank;
 
-public final class ExampleBank implements Keyed {
+public final class ExampleBank {
 
-    private final Key key;
+    private final CurrencyBank key;
     private double balance = 0.0;
 
-    public ExampleBank(final Key key) {
+    public ExampleBank(final CurrencyBank key) {
         this.key = key;
     }
 
@@ -20,8 +19,7 @@ public final class ExampleBank implements Keyed {
         this.balance = balance;
     }
 
-    @Override
-    public Key key() {
+    public CurrencyBank key() {
         return this.key;
     }
 }
