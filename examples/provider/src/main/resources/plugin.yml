@@ -1,0 +1,6 @@
+name: crypt-provider
+version: 1.0.0-SNAPSHOT
+authors: [broccoli]
+main: love.broccolai.crypt.provider.CryptProvider
+
+depend: [crypt-bukkit]

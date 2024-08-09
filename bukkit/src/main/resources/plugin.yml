@@ -1,0 +1,5 @@
+name: crypt-bukkit
+version: 1.0.0-SNAPSHOT
+authors: [broccoli]
+main: love.broccolai.crypt.bukkit.CryptBukkit
+load: startup
